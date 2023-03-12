@@ -15,7 +15,6 @@ public class ExceptionController {
     }
     @ExceptionHandler(value = RecordTooLongException.class)
     public ResponseEntity<Object> exception(RecordTooLongException exception) {
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.REQUEST_HEADER_FIELDS_TOO_LARGE);
-//        HttpStatus.BAD_REQUEST ??
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

@@ -49,9 +49,25 @@ public class TelevisionsController {
         if (!tvRepository.existsById(id)) {
             throw new RecordNotFoundException("ID cannot be found");
         }
-        tvRepository.deleteById(id);
-        tvRepository.save(tv);
-        return ResponseEntity.ok().body(tvRepository.findById(id));
+    Tv newTv = tvRepository.getReferenceById(id);
+    newTv.setName(tv.getName());
+    newTv.setAmbiLight(tv.getAmbiLight());
+    newTv.setBrand(tv.getBrand());
+    newTv.setHdr(tv.getHdr());
+    newTv.setBluetooth(tv.getBluetooth());
+    newTv.setAvailableSize(tv.getAvailableSize());
+    newTv.setOriginalStock(tv.getOriginalStock());
+    newTv.setPrice(tv.getPrice());
+    newTv.setRefreshRate(tv.getRefreshRate());
+    newTv.setScreenQuality(tv.getScreenQuality());
+    newTv.setScreenType(tv.getScreenType());
+    newTv.setSmartTv(tv.getSmartTv());
+    newTv.setSold(tv.getSold());
+    newTv.setType(tv.getType());
+    newTv.setVoiceControl(tv.getVoiceControl());
+    newTv.setWifi(tv.getWifi());
+        tvRepository.save(newTv);
+        return ResponseEntity.ok().body("Updated");
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteTvById (@PathVariable Long id) {
@@ -59,8 +75,6 @@ public class TelevisionsController {
             throw new RecordNotFoundException("ID cannot be found");
         }
        tvRepository.deleteById(id);
-        tvRepository.count();
-
         return ResponseEntity.noContent().build();
     }
 //    @GetMapping("/{id}")
