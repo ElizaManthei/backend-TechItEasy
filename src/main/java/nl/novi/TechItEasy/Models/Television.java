@@ -4,9 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+
 @Entity
 @Table(name = "tvs")
-public class Tv {
+public class Television {
     @Id
     @GeneratedValue
     private Long id;
@@ -27,16 +29,14 @@ public class Tv {
     private Integer originalStock;
     private Integer sold;
 
-    public Tv(String name, Double price){
+    public Television(String name, Double price){
         this.name = name;
         this.price = price;
 
     }
-
-    public Tv() {
+    public Television() {
 
     }
-
     public String getName() {
         return name;
     }
