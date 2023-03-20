@@ -13,12 +13,27 @@ public class RemoteControllerInputDto {
     public Double price;
     public Integer originalStock;
     public RemoteController toRemoteController(RemoteController remoteController) {
-        remoteController.setCompatibleWith(this.compatibleWith);
-        remoteController.setBatteryType(this.batteryType);
-        remoteController.setName(this.name);
-        remoteController.setBrand(this.brand);
-        remoteController.setPrice(this.price);
-        remoteController.setOriginalStock(this.originalStock);
+        if (this.id != null) {
+        remoteController.setId(this.id);
+        }
+        if (this.compatibleWith != null) {
+            remoteController.setCompatibleWith(this.compatibleWith);
+        }
+        if (this.batteryType != null) {
+            remoteController.setBatteryType(this.batteryType);
+        }
+        if (this.name != null) {
+            remoteController.setName(this.name);
+        }
+        if (this.brand != null) {
+            remoteController.setBrand(this.brand);
+        }
+        if (this.price != null) {
+            remoteController.setPrice(this.price);
+        }
+        if (this.originalStock != null) {
+            remoteController.setOriginalStock(this.originalStock);
+        }
         return remoteController;
     }
 }

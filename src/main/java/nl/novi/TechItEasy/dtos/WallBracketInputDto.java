@@ -11,10 +11,21 @@ public class WallBracketInputDto {
     public String name;
     public Double price;
 public WallBracket toWallBracket(WallBracket wallBracket) {
-    wallBracket.setSize(this.size);
-    wallBracket.setAjustable(this.ajustable);
-    wallBracket.setName(this.name);
-    wallBracket.setPrice(this.price);
+    if (this.id != null) {
+        wallBracket.setId(this.id);
+    }
+    if (this.size != null) {
+        wallBracket.setSize(this.size);
+    }
+    if (this.ajustable != null) {
+        wallBracket.setAjustable(this.ajustable);
+    }
+    if (this.name != null) {
+        wallBracket.setName(this.name);
+    }
+    if (this.price != null) {
+        wallBracket.setPrice(this.price);
+    }
     return wallBracket;
     }
 }
