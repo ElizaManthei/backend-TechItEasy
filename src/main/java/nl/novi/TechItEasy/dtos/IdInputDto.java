@@ -1,2 +1,5 @@
-package nl.novi.TechItEasy.dtos;public class IdInputDto {
+package nl.novi.TechItEasy.dtos;
+
+public class IdInputDto {
+   public Long id;
 }

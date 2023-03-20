@@ -1,6 +1,6 @@
 package nl.novi.TechItEasy.Exceptions;
 
-public class RecordTooLongException extends RuntimeException{
+public class RecordTooLongException extends RuntimeException {
     private static final long serialVersionUID = 1L;
     public RecordTooLongException() {
         super();

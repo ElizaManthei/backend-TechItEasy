@@ -1,5 +1,7 @@
 package nl.novi.TechItEasy.Controllers;
 
+import nl.novi.TechItEasy.Exceptions.NotANumberException;
+import nl.novi.TechItEasy.Exceptions.RecordAssignedException;
 import nl.novi.TechItEasy.Exceptions.RecordNotFoundException;
 import nl.novi.TechItEasy.Exceptions.RecordTooLongException;
 import org.springframework.http.HttpStatus;
@@ -16,5 +18,13 @@ public class ExceptionController {
     @ExceptionHandler(value = RecordTooLongException.class)
     public ResponseEntity<Object> exception(RecordTooLongException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(value = NotANumberException.class)
+    public ResponseEntity<Object> exception(NotANumberException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(value = RecordAssignedException.class)
+    public ResponseEntity<Object> exception(RecordAssignedException exception) {
+        return new ResponseEntity<>(exception.getMessage(),HttpStatus.BAD_REQUEST);
     }
 }

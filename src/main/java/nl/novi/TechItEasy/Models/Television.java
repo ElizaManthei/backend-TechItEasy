@@ -1,13 +1,10 @@
 package nl.novi.TechItEasy.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "tvs")
+@Table
 public class Television {
     @Id
     @GeneratedValue
@@ -28,15 +25,20 @@ public class Television {
     private Boolean ambiLight;
     private Integer originalStock;
     private Integer sold;
+    @ManyToOne
+    @JoinColumn(name = "cimodule_id")
+    private CIModule ciModule;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "remotecontroller_id")
+    private RemoteController remoteController;
+    @ManyToMany
+    @JoinTable(
+            name = "television_wallbrackets",
+            joinColumns = @JoinColumn(name = "television_id"),
+            inverseJoinColumns = @JoinColumn(name = "wallbracket_id")
+    )
+    private List<WallBracket> wallBrackets;
 
-    public Television(String name, Double price){
-        this.name = name;
-        this.price = price;
-
-    }
-    public Television() {
-
-    }
     public String getName() {
         return name;
     }
@@ -173,4 +175,28 @@ public class Television {
         this.id = id;
     }
 
+    public void setCiModule(CIModule ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public CIModule getCiModule() {
+        return ciModule;
+    }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+
+    public List<WallBracket> getWallBrackets() {
+        return wallBrackets;
+    }
+
+    public void setWallBrackets(List<WallBracket> wallBrackets) {
+        this.wallBrackets = wallBrackets;
+    }
 }
